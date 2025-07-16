@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✧ Feliz Cumpleaños Amiga de mi Corazón ✧</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .background-photos {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .bg-photo {
+            width: 100%;
+            height: 100%;
+            background-image: url('foto1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(1px);
+            opacity: 0.7;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(0, 0, 0, 0.3) 0%, 
+                rgba(0, 0, 0, 0.2) 25%, 
+                rgba(0, 0, 0, 0.3) 50%, 
+                rgba(0, 0, 0, 0.2) 75%, 
+                rgba(0, 0, 0, 0.3) 100%);
+            z-index: -1;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            animation: floatUp 8s infinite linear;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border: 2px solid rgba(255, 20, 147, 0.3);
+        }
+
+        .play-button {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+        }
+
+        .play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.6);
+        }
+
+        .volume-control {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-slider {
+            width: 100px;
+            height: 5px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #ff1493;
+            cursor: pointer;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5em;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+            margin-bottom: 15px;
+            font-weight: 700;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(255, 20, 147, 1), 0 0 40px rgba(255, 20, 147, 0.8);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .poem-section {
+            padding: 40px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poem-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff1493, #ff69b4, #da70d6);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .poem-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 20, 147, 0.6);
+            font-weight: 600;
+        }
+
+        .poem {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #fff;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .poem p {
+            margin-bottom: 25px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .poem p:hover {
+            transform: translateX(5px);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5em;
+            color: #ff69b4;
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 105, 180, 0.6);
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 105, 180, 0.8);
+        }
+
+        .final-message {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 25px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .final-message p {
+            font-size: 1.4em;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            animation: sparkle 3s ease-out forwards;
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(360deg);
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            top: -10px;
+            pointer-events: none;
+            z-index: 100;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .poem-section, .final-message {
+                padding: 25px;
+            }
+            
+            .music-player {
+                top: 10px;
+                right: 10px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-photos">
+        <div class="bg-photo"></div>
+    </div>
+    <div class="overlay"></div>
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <div class="music-player">
+        <button class="play-button" id="playButton">🎵 Reproducir</button>
+        <div class="volume-control">
+            <span style="color: #666;">🔊</span>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+        </div>
+        <audio id="backgroundMusic" loop>
+            <source src="musica.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio HTML5.
+        </audio>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🌷 Feliz Cumpleaños Amiga de mi Corazón 🌷</h1>
+            <p class="subtitle">Un tributo especial para una persona muy especial</p>
+        </div>
+
+        <div class="poem-section">
+            <h2>Un Poema Para Ti</h2>
+            <div class="poem">
+                <p>Aunque el tiempo vuele sin detener,<br>
+                y no logremos siempre responder,<br>
+                te pienso con ternura y alegría,<br>
+                como quien guarda una melodía.</p>
+
+                <p>Sos de esas almas dulces y brillantes,<br>
+                que dejan huellas, aun en instantes,<br>
+                con esa risa noble y encantadora,<br>
+                que calma todo y siempre mejora.</p>
+
+                <p>Tu familia es un refugio encantado,<br>
+                de abrazos tibios, de amor desbordado.<br>
+                Se nota en tu hija, tu casa, tu unión,<br>
+                el pulso tan fuerte de tu corazón.</p>
+
+                <p>Siempre tan noble, tan generosa,<br>
+                de esencia buena, de alma hermosa.<br>
+                Amás lo que hacés con tanta pasión,<br>
+                que el mundo te sigue con admiración.</p>
+
+                <p>Hoy brindo por vos, por tu luz infinita,<br>
+                por tu risa clara, por tu alma bendita.<br>
+                ¡Feliz cumpleaños, amiga adorada!<br>
+                Que la vida te abrace y esté colmada de hadas.</p>
+
+                <div class="signature">✨ Con todo mi cariño y amor, Sergio 💖</div>
+            </div>
+        </div>
+
+        <div class="final-message">
+            <p>🎉 ¡Que tengas el día más hermoso del mundo! 🎉</p>
+            <p style="font-style: italic; margin-top: 15px;">
+                Que este nuevo año de vida esté lleno de alegría, salud y amor infinito.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('backgroundMusic');
+            const playButton = document.getElementById('playButton');
+            const volumeSlider = document.getElementById('volumeSlider');
+            let isPlaying = false;
+
+            // Control de reproducción
+            playButton.addEventListener('click', function() {
+                if (!isPlaying) {
+                    audio.play().then(() => {
+                        isPlaying = true;
+                        playButton.textContent = '⏸️ Pausar';
+                        playButton.style.background = 'linear-gradient(45deg, #32cd32, #98fb98)';
+                    }).catch(e => {
+                        console.log('Error al reproducir:', e);
+                        alert('No se pudo reproducir la música. Asegúrate de que el archivo musica.mp3 esté en la carpeta.');
+                    });
+                } else {
+                    audio.pause();
+                    isPlaying = false;
+                    playButton.textContent = '🎵 Reproducir';
+                    playButton.style.background = 'linear-gradient(45deg, #ff1493, #ff69b4)';
+                }
+            });
+
+            // Control de volumen
+            volumeSlider.addEventListener('input', function() {
+                audio.volume = this.value;
+            });
+
+            // Inicializar volumen
+            audio.volume = 0.5;
+
+            // Efectos visuales
+            setInterval(createSparkle, 3000);
+            setInterval(createConfetti, 1000);
+            setInterval(createFloatingHeart, 2000);
+
+            // Crear corazones flotantes
+            function createFloatingHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                document.getElementById('floating-hearts').appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }
+
+            // Crear destellos
+            function createSparkle() {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.innerHTML = '✨';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.fontSize = Math.random() * 25 + 15 + 'px';
+                sparkle.style.color = '#ffd700';
+                sparkle.style.textShadow = '0 0 10px rgba(255,215,0,0.5)';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 3000);
+            }
+
+            // Crear confeti
+            function createConfetti() {
+                const colors = ['#ff1493', '#ff69b4', '#da70d6', '#ba55d3', '#9370db'];
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.innerHTML = '🎊';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+
+            // Inicializar efectos
+            for (let i = 0; i < 3; i++) {
+                setTimeout(createFloatingHeart, i * 1000);
+            }
+        });
+    </script>
+</body>
+</html>
